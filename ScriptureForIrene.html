@@ -5,41 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-    font-family: 'Poppins', 'Microsoft JhengHei', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    height: 100vh; /* 設定滿版高度 */
-    overflow-x: hidden;
-}
-
-/* 設定背景圖片 */
-.bg-fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://github.com/Simple0223/IreneBirthday/blob/main/background1.jpg?raw=true');
-    background-size: cover;
-    background-position: center;
-    z-index: -2; /* 確保背景圖片在最底層 */
-}
-
-/* 白色透明遮罩 */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.6);
-    z-index: -1;
-}
+            font-family: 'Poppins', 'Microsoft JhengHei', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .bg-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://github.com/Simple0223/IreneBirthday/blob/main/background1.jpg?raw=true');
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.6);
+            z-index: -1;
+        }
 
 
         h1 {
@@ -71,7 +69,6 @@
             font-weight: bold;
         }
 
-        /* 按鈕樣式 */
         .custom-btn {
             background-color: #a0c4ff;
             border: none;
@@ -87,13 +84,11 @@
             text-transform: uppercase;
         }
 
-            /* 按鈕hover效果 */
             .custom-btn:hover {
                 background-color: #2b7dff;
                 box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.2);
             }
 
-            /* 按鈕active效果 */
             .custom-btn:active {
                 background-color: #72a6f9;
                 box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -105,8 +100,8 @@
     </style>
 </head>
 <body>
-    <div class="bg-fixed"></div> <!-- 背景圖片 -->
-    <div class="overlay"></div>   <!-- 半透明遮罩 -->
+    <div class="bg-fixed"></div>
+    <div class="overlay"></div>
     <button class="custom-btn" onclick="redirectToPage()">前往生日卡片</button>
     <h1>祝福經文</h1>
     <button class="custom-btn" onclick="randomCard()">抽取隨機經文</button>
@@ -123,12 +118,10 @@
     <h5 id="randomText"></h5>
 
     <script>
-        // 跳轉到其他頁面
         function redirectToPage() {
-            window.location.href = "https://simple0223.github.io/IreneBirthday/"; // 這裡換成你要的網址
+            window.location.href = "https://simple0223.github.io/IreneBirthday/";
         }
 
-        // 定義圖片清單
         const titles = [
             "出埃及記4:8\n又說、倘或他們不聽你的話、\n也不信頭一個神蹟、他們必信第二個神蹟。",
             "士師記4:8\n巴拉說、你若同我去、我就去，\n你若不同我去、我就不去。",
@@ -177,7 +170,6 @@
             "芝琳，即使四活物是我們無法理解的範疇。\n但他們卻依然「晝夜不住」的讚美神。\n坦白說我很難理解神的榮耀是什麼概念。\n或許就像是路上看到很昂貴的跑車、\n又或許像是背著名牌包包的貴婦、\n可能是偉大的發明家、或是百年一見天才兒童？\n不過這些豈能比造物主榮耀呢？\n這樣想就好像能懂所謂神的榮耀是什麼了。\n路邊的花花早早、天上的陽光普照、\n天上的飛鳥、以及能與大家相處的每個時光。\n這些都是只有神能做到、很常見的「神蹟」。\n羞愧！原來我與神蹟如此靠近而不自知，\n很感恩每個跟大家相處的時刻。\n感謝永在今在的全能者，讓我能與大家相遇。\n一切頌讚、榮耀歸與祂！",
         ];
 
-        // 隨機抽取經文
         function randomCard() {
             document.getElementById("hint").style.display = "none";
             const timestamp = Date.now();
