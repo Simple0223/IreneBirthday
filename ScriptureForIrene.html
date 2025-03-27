@@ -1,0 +1,25 @@
+<button onclick="redirectToPage()">回到生日卡片頁</button>
+<img id="randomImage" src="" alt="隨機圖片">
+
+<script>
+  function redirectToPage() {
+        window.location.href = "https://simple0223.github.io/IreneBirthday/"; // 這裡換成你要的網址
+    }
+  
+    // 定義圖片清單
+    const images = [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg"
+    ];
+
+    // 取得當前時間的毫秒數
+    const timestamp = Date.now();
+
+    // 使用毫秒數 % 圖片數量來決定顯示哪張圖片
+    const index = timestamp % images.length;
+
+    // 設定圖片
+    document.getElementById("randomImage").src = images[index];
+</script>
