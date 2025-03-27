@@ -16,10 +16,32 @@
             max-width: 600px;
             margin: 20px 0;
         }
+
+        .custom-btn {
+        background-color: #a0c4ff; /* 淡藍色 */
+        border: none;
+        color: #2b3a67; /* 深藍色字體 */
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-btn:hover {
+        background-color: #8bb8ff; /* 懸停時稍微變深 */
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .custom-btn:active {
+        background-color: #72a6f9; /* 按下去時更深 */
+        box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
     </style>
 </head>
 <body>
-    <button onclick="redirectToPage()">切換頁面</button>
+    <button class="custom-btn" onclick="redirectToPage()">前往生日經文祝福</button>
     <h1>Simple給芝琳的生日卡片</h1>
     <h4>手機長按、電腦右鍵可以下載卡片唷～</h4>
     <h2 id="hint" style="color: red;">要等2025年的生日後才會顯示</h2>
