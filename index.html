@@ -4,59 +4,252 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /* 整體頁面排版 */
         body {
+            font-family: 'Poppins', 'Microsoft JhengHei', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-        }
-        img {
-            width: 100%;
-            max-width: 600px;
-            margin: 20px 0;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://github.com/Simple0223/IreneBirthday/blob/main/background1.jpg?raw=true'); /* 替換成你的背景圖片網址 */
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed; /* 背景固定，滾動時不會移動 */
         }
 
+            body::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 350%;
+                background-color: rgba(255, 255, 255, 0.6); /* 半透明白色遮罩 */
+                z-index: -1; /* 保證遮罩在背景圖片後面 */
+            }
+
+        h1 {
+            font-size: 3rem;
+            color: #0a2245;
+            margin: 30px 0;
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+            color: #555;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        h5 {
+            font-size: 1rem;
+            color: #022f6e;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        h2#hint {
+            font-size: 1.5rem;
+            color: red;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* 按鈕樣式 */
         .custom-btn {
-        background-color: #a0c4ff; /* 淡藍色 */
-        border: none;
-        color: #2b3a67; /* 深藍色字體 */
-        padding: 12px 24px;
-        font-size: 16px;
-        font-family: 'Poppins', 'Microsoft JhengHei', sans-serif; /* 優雅的英文字體 + 中文支援 */
-        font-weight: 600; /* 讓字體稍微加粗但不太重 */
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    }
+            background-color: #a0c4ff;
+            border: none;
+            color: #FFF;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
 
-    .custom-btn:hover {
-        background-color: #8bb8ff; /* 懸停時稍微變深 */
-        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
-    }
+            /* 按鈕hover效果 */
+            .custom-btn:hover {
+                background-color: #2b7dff;
+                box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.2);
+            }
 
-    .custom-btn:active {
-        background-color: #72a6f9; /* 按下去時更深 */
-        box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
-    }
+            /* 按鈕active效果 */
+            .custom-btn:active {
+                background-color: #72a6f9;
+                box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+            }
     </style>
 </head>
-<body>
-    <button class="custom-btn" onclick="redirectToPage()">前往生日經文祝福</button>
-    <h1>Simple給芝琳的生日卡片</h1>
-    <h4>手機長按、電腦右鍵可以下載卡片唷～</h4>
-    <h2 id="hint" style="color: red;">要等2025年的生日後才會顯示</h2>
-    <img id="birthdayCard" style="display: none;" src="https://github.com/Simple0223/orangeBirthdayCard/blob/main/simple_to_orange.png?raw=true" alt="Image 1">
-</body>
-</html>
 
-<script>
-    function redirectToPage() {
-        window.location.href = "https://simple0223.github.io/IreneBirthday/ScriptureForIrene"; // 這裡換成你要的網址
-    }
-     // 設定顯示的時間（2025/4/8）
-        const showDate = new Date("2025-04-08T00:00:00"); 
+<body>
+    <!-- 前往頁面的按鈕 -->
+    <button class="custom-btn" onclick="redirectToPage()">前往祝福經文</button>
+    <h1>生日卡片</h1>
+    <h2 id="hint">要等2025年的生日後才會顯示</h2>
+    <h5 id="birthdayCard" style="display: none;">
+        Dear 芝琳
+        <br>芝琳生日快樂！
+        <br>在這重要的一天，
+        <br>我想對妳說我很開心、也很榮幸能夠認識妳。
+        <br>雖然我們從招待就認識了，
+        <br>但一直到劇團、舞團一起出演的期間才更加認識妳。
+        <br>我超級感動妳為我做的生日影片，
+        <br>跟大家要一段錄影真的很不容易。
+        <br>在我眼中，這影片蘊含了服務的行動+專屬的禮物，
+        <br>是長存不會朽壞的，PS：我備份在很多地方XD
+        <br>裡面滿有肯定的言詞，也傾注了妳花的時間與心思，
+        <br>我感受到妳製片當下的精心時刻。
+        <br>感覺除了身體的接觸已經蘊含了所有愛之語呢！
+        <br>所以，我怎麼能輸呢！
+        <br>即使我並不算是很會觀察人的人，
+        <br>也不是很擅長表達，
+        <br>我沒有自信自己說得都是對的，
+        <br>但這樣拙口笨舌的我想來尊榮妳。
+        <br>(以下內容請勿分享給其他人，因為我會害羞XD)
+        <br>
+        <br>我覺得妳是很真誠的人，妳的每一個情緒、每一個想法，
+        <br>都讓我感受到真實的妳。
+        <br>妳是願意溝通、解決問題的人，
+        <br>跟這樣的妳相處會很有安全感。
+        <br>我相信就算我不小心做了讓妳難過或失望的事情，
+        <br>我們還是能重歸於好。
+        <br>妳是很會尊榮人的人。
+        <br>我小時候常被我爸否定，
+        <br>說我一文不值或是我不應該被生出來，
+        <br>但當我考大學的成績可以上任何學校時，
+        <br>他才說我是寶貝兒子，
+        <br>變得很喜歡帶我去公司或親戚面前炫耀，
+        <br>所以我覺得誇獎是一個很噁心的行為，
+        <br>我不知道別人誇獎我的時候是不是真的。
+        <br>但在每一次被妳真誠的尊榮後，
+        <br>我也一次次的被治癒、被修復。
+        <br>很榮幸神讓我可以認識妳，
+        <br>讓我也可以擁有自信，讓我知道我其實並不差。
+        <br>
+        <br>我也覺得妳是一個情感豐富的人，
+        <br>同時也能夠敏銳身邊的人的狀態與情緒。
+        <br>上次在東區的公園妳們逼問敬司為什麼心情不好，
+        <br>遲鈍如我還以為妳們只是想吃瓜，
+        <br>想不到妳們還真的挖出了他心深處的需要，
+        <br>並且給予了幫助與肯定，這其實讓我很震驚。
+        <br>我覺得妳對人的情緒與需要好敏銳，
+        <br>為身邊的人著想的心好美。
+        <br>這對我來說是困難的，
+        <br>有時候我連自己的情緒都不清楚，
+        <br>對於別人的情緒常常是後知後覺。
+        <br>雖然這樣讓我的思考更加理性，
+        <br>但我還是常常很羨慕有這種特質的人。
+        <br>也正因為跟著不一樣的妳們相處，
+        <br>我的生活交織出了美麗的圖畫，
+        <br>也是生命美好的樂章。
+        <br>很高興身邊有情感豐富的妳，
+        <br>也使我的生活豐富了起來。
+        <br>
+        <br>在我眼中，妳是一個節儉的人，
+        <br>妳在買自己的東西時會考量價格。
+        <br>有多件想要的衣服也會細細思考，
+        <br>詢問大家的建議，並且選出最適合的那一件！
+        <br>這是未來有家庭之後，
+        <br>維持家庭經濟狀況非常重要的特質。
+        <br>然而這樣的妳，
+        <br>為了大家一起的緣故還是願意吃昂貴的餐廳。
+        <br>或許妳在錢上面有不安全感，
+        <br>但妳還是願意為了大家面對自己的軟弱。
+        <br>妳真的很愛大家，在這個團體裡妳也不斷的成長，
+        <br>很高興妳沒有被金錢綑綁而離開大家，
+        <br>而是願意多花一些錢跟大家相處。
+        <br>
+        <br>我還看見妳有一個我覺得相對稀少的特質，
+        <br>妳是一個溫柔體貼的女孩子。
+        <br>妳常常有些小舉動讓我覺得很貼心很溫暖，
+        <br>尤其在三井Outlet，
+        <br>我手術後不便時跑過來幫我拿餐，
+        <br>我真的覺得很窩心。
+        <br>我在為別人付出的時候，
+        <br>我不求回報，只希望能成為照亮別人的光，
+        <br>但我卻覺得鮮少有被照亮的感覺，
+        <br>而妳的這些舉動時不時的照亮了我，
+        <br>在我的眼中，妳是為神作光作鹽的人。
+        <br>我認為女孩子最重要的特質不過於此。
+        <br>在這個講求個人主義的現代，
+        <br>妳像蓮花般出淤泥而不染。
+        <br>
+        <br>看到妳還是學生的時候，
+        <br>就已經有為神擺上的心，我感到於有榮焉。
+        <br>不論是招待、舞團、還是小組長的職分上，
+        <br>都闡明妳是一個認真愛神的人。
+        <br>才德的婦人誰能得著呢？她的價值遠勝珍珠。
+        <br>她丈夫心裡倚靠她， 必不缺少利益，
+        <br>她一生使丈夫有益無損。
+        <br>我想對妳說妳的價值遠勝珍珠，
+        <br>或是說區區珍珠怎麼可能比我們芝琳有價值，
+        <br>簡直荒謬至極！
+        <br>我記得妳很期待婚姻，
+        <br>也很期待將來能有自己的孩子，
+        <br>我對妳有信心，妳也要對自己有信心。
+        <br>房屋錢財是祖宗所遺留的，
+        <br>惟有賢慧的妻是耶和華所賜的。
+        <br>誰娶到妳就代表他是很愛神的人，
+        <br>才能到有神賜下的這麼大的福分。
+        <br>
+        <br>最後說一個膚淺但女孩子都愛聽話的吧！
+        <br>如同靖翎姐說妳拍照無死角，
+        <br>我也覺得妳既漂亮又可愛，
+        <br>有時候還會說一些淘氣、好笑的話逗我們開心。
+        <br>妳可能會羨慕雙眼皮的大眼睛、
+        <br>更挺的鼻樑、或是妳認為更好看的臉型。
+        <br>但我以我的誠實向妳說，我們的神真的很厲害，
+        <br>妳的這些五官搭起來就是很好看，
+        <br>而我也相信這是客觀事實。
+        <br>去年生日妳覺得自己的照片不好看不想給大家看，
+        <br>我真的不能理解哪裡不好看耶？
+        <br>期待妳可以更加的有自信，
+        <br>可以嘗試放下妳的偶像包袱，
+        <br>作一個更自在的人。
+        <br>不過妳要是放不下包袱也沒關係，
+        <br>就我們一起扛著吧！
+        <br>也偷偷告訴妳，以我的審美觀而言，
+        <br>妳是舞團最漂亮的，只有芝琳沒有之一。
+        <br>但還是提醒一下，外貌長相會隨著時間流逝，
+        <br>自信與自我價值如果過多建立在這上面是很危險的。
+        <br>比起粉底、眼影、口紅，
+        <br>妳最美的裝飾是應該是智慧、溫柔、良善等這些美德。
+        <br>
+        <br>不小心打了這麼多內容，
+        <br>知道為什麼我要用電子版了吧哈哈，手寫根本寫不完。
+        <br>希望妳有看完，並且也有讓妳的生日更加開心。
+        <br>妳知道的，我不善於說說謊，
+        <br>也不會為了妳生日而這麼做，
+        <br>以上言論以我至今信實的品格為證，毫無虛言。
+        <br>
+        <br>很開心能跟妳一起演戲，
+        <br>妳一定會像諾亞的妻子那樣成為很棒的幫助者。
+        <br>所以送上我們的象徵物——諾亞方舟。
+        <br>希望它不只承載著各種動物，
+        <br>也能承載我們過去許多美好的回憶、
+        <br>收藏每個當下的點點滴滴、並且持續航我們美好的未來。
+        <br>
+        <br>by Simple
+        <br>
+        <br>
+    </h5>
+
+    <script>
+        // 跳轉到另一頁
+        function redirectToPage() {
+            window.location.href = "https://simple0223.github.io/IreneBirthday/ScriptureForIrene";
+        }
+
+        // 設定顯示的時間（2025/4/8）
+        const showDate = new Date("2025-04-08T00:00:00");
 
         // 取得當前時間
         const now = new Date();
@@ -66,4 +259,6 @@
             document.getElementById("hint").style.display = "none";
             document.getElementById("birthdayCard").style.display = "block";
         }
-     </script>
+    </script>
+</body>
+</html>

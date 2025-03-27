@@ -1,68 +1,151 @@
-<style>
-    body {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 整體頁面排版 */
+        body {
+            font-family: 'Poppins', 'Microsoft JhengHei', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://github.com/Simple0223/IreneBirthday/blob/main/background1.jpg?raw=true'); /* 替換成你的背景圖片網址 */
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed; /* 背景固定，滾動時不會移動 */
         }
-        img {
-            width: 100%;
-            max-width: 600px;
-            margin: 20px 0;
+
+            body::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.6); /* 半透明白色遮罩 */
+                z-index: -1; /* 保證遮罩在背景圖片後面 */
+            }
+
+        h1 {
+            font-size: 3rem;
+            color: #0a2245;
+            margin: 30px 0;
+            font-weight: 700;
         }
 
-    
-    .custom-btn {
-        background-color: #a0c4ff; /* 淡藍色 */
-        border: none;
-        color: #2b3a67; /* 深藍色字體 */
-        padding: 12px 24px;
-        font-size: 16px;
-        font-family: 'Poppins', 'Microsoft JhengHei', sans-serif; /* 優雅的英文字體 + 中文支援 */
-        font-weight: 600; /* 讓字體稍微加粗但不太重 */
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    }
+        h4 {
+            font-size: 1.25rem;
+            color: #555;
+            margin-bottom: 20px;
+            text-align: left;
+        }
 
-    .custom-btn:hover {
-        background-color: #8bb8ff; /* 懸停時稍微變深 */
-        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
-    }
+        h5 {
+            font-size: 1rem;
+            color: #022f6e;
+            margin-bottom: 20px;
+            font-weight: 400;
+            text-align: left;
+        }
 
-    .custom-btn:active {
-        background-color: #72a6f9; /* 按下去時更深 */
-        box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
-    }
-</style>
+        h2#hint {
+            font-size: 1.5rem;
+            color: red;
+            margin-top: 20px;
+            font-weight: bold;
+        }
 
-<html>
-  <body>
+        /* 按鈕樣式 */
+        .custom-btn {
+            background-color: #a0c4ff;
+            border: none;
+            color: #FFF;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+
+            /* 按鈕hover效果 */
+            .custom-btn:hover {
+                background-color: #2b7dff;
+                box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            /* 按鈕active效果 */
+            .custom-btn:active {
+                background-color: #72a6f9;
+                box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+            }
+
+        #randomExperience {
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+    <h1>祝福經文</h1>
     <button class="custom-btn" onclick="redirectToPage()">前往生日卡片</button>
-    <img id="randomImage" src="" alt="隨機圖片">
-  </body>
+    <button class="custom-btn" onclick="randomCard()">抽取隨機經文</button>
+    <h4 id="randomTitle"></h4>
+    <h5 id="randomText"></h5>
+
+    <script>
+        // 跳轉到其他頁面
+        function redirectToPage() {
+            window.location.href = "https://simple0223.github.io/IreneBirthday/"; // 這裡換成你要的網址
+        }
+
+        // 定義圖片清單
+        const titles = [
+            //"出埃及記4:8\n又說、倘或他們不聽你的話、\n也不信頭一個神蹟、他們必信第二個神蹟。",
+            //"士師記4:8\n巴拉說、你若同我去、我就去，\n你若不同我去、我就不去。",
+            //"路得記4:8\n那人對波阿斯說：\n你自己買罷，於是將鞋脫下來了。",
+            //"列王記下4:8\n一日以利沙走到書念，\n在那裡有一個大戶的婦人，強留他吃飯。\n此後，以利沙每從那裡經過，就進去吃飯。",
+            //"詩篇4:8\n我必安然躺下睡覺，\n因為獨有你耶和華使我安然居住。",
+            //"箴言4:8\n高舉智慧，他就使你高陞，\n懷抱智慧，他就使你尊榮。",
+            //"傳道書4:8\n有人孤單無二，無子無兄，\n竟勞碌不息，眼目也不以錢財為足。\n他說我勞勞碌碌，刻苦自己、不享福樂，\n到底是為誰呢？這也是虛空，是極重的勞苦。",
+            //"雅歌4:8\n我的新婦，求你與我一同離開利巴嫩，\n與我一同離開利巴嫩，從亞瑪拿頂、\n從示尼珥與黑門頂、從有獅子的洞、\n從有豹子的山、往下觀看。",
+            //"馬可福音4:8\n又有落在好土裡的，就發生長大，\n結實有三十倍的、有六十倍的、\n有一百倍的。",
+            //"路加福音4:8\n耶穌說，經上記著說：\n「當拜主你的神，單要事奉他。」",
+            "羅馬書4:8\n主不算為有罪的，這人是有福的。",
+        ];
+
+        const texts = [
+            //"芝琳，在妳牧養或傳福音的路上，\n或許有些人妳總是沒辦法讓他真的相信、認識神。\n就像摩西在帶領以色列人時，\n一個神蹟還不見得能讓百姓相信。\n不過沒關係，妳可以相信神，\n祂一定會大大使用妳，在妳身上行多而又多的神蹟，\n讓妳身邊的人都知道耶和華是真神！",
+            //"芝琳，在走義人的路時，\n常常會有感到困難、疑惑的時候，\n就像先知吩咐巴拉去打\n兵力懸殊的仗也會感到害怕。\n但巴拉做了一個很好的示範：\n「你若同我去、我就去\n，你若不同我去、我就不去。」\n只要有神的地方，就是安全的地方。\n期待妳在一次次挑戰中\n獲得更堅定的信心！",
+            //"芝琳，妳記得這個故事嗎？路得遇到了波阿斯，\n他是很棒的人，心中有神的真理。\n在當時的年代，路得的贖權另有其人，\n波阿斯很有智慧的等候對方的決定。\n即使不知道結果如何，還是做了無可指摘的選擇。\n期許我們都能做這樣的人，\n在各個選擇上都尊重權柄、蒙神喜悅。",
+            //"芝琳，當我們用愛心接待客旅，不知不覺就接待了天使。\n我們若是保持良善的心，神必看見。\n當然也要小心一些小人，有分辨的智慧是重要的唷~",
+            /*"芝琳，漫漫人生中難免遇到讓妳難以安然入睡的事。\n然而大衛經歷了那麼多次的追殺，\n不僅掃羅王，甚至他兒子押沙龍也追殺他。\n然而他還是得出一個結論：耶和華使我安然居住。\n我們有神真是美好！只要有神我們就大有盼望！\n當妳無法安然躺下睡覺，請記得神永遠是妳的避難所。",*/
+            //"芝琳，所羅門王向神求智慧，\n他覺得自己需要智慧才能在百姓中判斷是非。\n這件事讓神非常喜悅，連他沒有求的也一併賜給他。\n讓我們也向神求智慧，並且要為神所用。\n期待妳因著神越來越有智慧。",
+            //"芝琳，在傳道書中，所羅門闡述他的智慧看透破紅塵，\n並且發現凡事都是虛空。沒錯，我們的世界就是虛空的。\n不論追求什麼，到頭來都會感到虛空，\n除了神以外，沒有任何事物能使我們真正的滿足。\n另外所羅門也說，為了神的國憂愁一生也是虛空，\n所以不要忘記，妳的喜樂是很重要的。\n希望芝琳未來都能緊緊跟隨神，並且天天被喜樂油澆灌。",
+            //"芝琳，這段經文是神期待能帶領我們離開仇敵的詭計。\n從高處往下觀看，這樣不論是獅子洞還是豹子山，\n都一覽無遺，神迫切希望我們看破仇敵的詭計！\n然而這又談何容易？我們需要神帶領才能上到頂端。\n雅歌是神的愛之歌，闡述了神深深的愛。\n同時也是我們學習愛情的典範。\n看雅歌可以感受到神是何等的期待人愛祂、歸向祂，\n但祂不逼迫我們，給了我們自由意志，等待我們轉向祂。\n祂溫柔的、有耐心的等候著。這是何等長擴高深的愛！\n讓我們也投入主的愛中吧~",
+            //"芝琳，雖然這是耳熟能詳的經文，\n但往往越熟的越容易被忽略，\n就算是好土，沒有加水還是會乾枯，\n我們需要時時鑒察自己的心是否還是好土。\n當我們沒有時常去翻動我們心裡的土，\n就可能會變得像部分的長輩那樣，\n無法接受新的知識與提醒。\n虛心受教是何等重要，\n虛心的人有福了！因為天國是他們的。\n不要追求完美，完美代表沒有改進的空間。\n我們要追求進步，在神的帶領下，\n芝琳定能一次次的突破自己。",
+            //"芝琳，當我們說單單事奉主的時候，\n我真的覺得很難做到，芝琳是否也是這樣想呢?\n或許是我們都還太過年輕吧?\n世間過於喧囂，專注愛神是我們一生的功課。\n單單事奉神是我們的目標，但神會等候我們的。\n我們不用害怕被神拋棄，\n只求這一次比上一次進步一點點。\n我們可以在掙扎的過程中享受神的愛，\n因為神愛我們是無條件的。",
+            "",
+        ];
+
+        randomCard();
+
+        // 隨機抽取經文
+        function randomCard() {
+            const timestamp = Date.now();
+            const index = timestamp % titles.length;
+            const experienceTitle = titles[index].replace(/\n/g, "<br>");
+            const experienceText = texts[index].replace(/\n/g, "<br>");
+            document.getElementById("randomTitle").innerHTML = experienceTitle;
+            document.getElementById("randomText").innerHTML = experienceText;
+        }
+    </script>
+</body>
 </html>
-<script>
-  function redirectToPage() {
-        window.location.href = "https://simple0223.github.io/IreneBirthday/"; // 這裡換成你要的網址
-    }
-  
-    // 定義圖片清單
-    const images = [
-        "image1.jpg",
-        "image2.jpg",
-        "image3.jpg",
-        "image4.jpg"
-    ];
-
-    // 取得當前時間的毫秒數
-    const timestamp = Date.now();
-
-    // 使用毫秒數 % 圖片數量來決定顯示哪張圖片
-    const index = timestamp % images.length;
-
-    // 設定圖片
-    document.getElementById("randomImage").src = images[index];
-</script>
