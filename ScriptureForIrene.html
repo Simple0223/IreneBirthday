@@ -71,29 +71,41 @@
         }
 
         .custom-btn {
-            background-color: #a0c4ff;
-            border: none;
-            color: #FFF;
-            padding: 12px 24px;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-            text-transform: uppercase;
-        }
+    background-color: #a0c4ff;
+    border: none;
+    color: #FFF;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-transform: uppercase;
+}
 
-            .custom-btn:hover {
-                background-color: #2b7dff;
-                box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.2);
-            }
+.custom-btn:hover {
+    background-color: #2b7dff;
+    box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.2);
+}
 
-            .custom-btn:active {
-                background-color: #72a6f9;
-                box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
-            }
+.custom-btn:active {
+    background-color: #72a6f9;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 增加 focus 狀態 */
+.custom-btn:focus {
+    outline: none; /* 去掉焦點外框 */
+    background-color: #72a6f9; /* 你可以調整顏色 */
+}
+
+/* 處理手機觸控狀態 */
+.custom-btn:active, .custom-btn:focus {
+    -webkit-tap-highlight-color: transparent; /* 解除手機觸控時的高亮 */
+}
+
 
         #randomExperience {
             white-space: pre-line;
@@ -105,7 +117,7 @@
     <div class="overlay"></div>
     <button class="custom-btn" onclick="redirectToPage()">生日卡片</button>
     <h1>祝福經文</h1>
-    <button class="custom-btn" onclick="randomCard()">抽取隨機經文</button><br>
+    <button class="custom-btn" onclick="randomCard()">抽取經文</button><br>
     <h4 id="hint">
         我看了所有4章8節的經文，
         <br>寫了我想跟妳分享的內容。
