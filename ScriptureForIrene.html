@@ -16,11 +16,6 @@
             overflow-x: hidden;
         }
         
-        .container {
-            margin: 0 auto;
-            text-align: left;
-        }
-
         .bg-fixed {
             position: fixed;
             top: 0;
@@ -56,6 +51,7 @@
             color: #555;
             margin-bottom: 20px;
             text-align: left;
+            display: inline-block;
         }
 
         h5 {
@@ -64,6 +60,7 @@
             margin-bottom: 20px;
             font-weight: 400;
             text-align: left;
+            display: inline-block;
         }
 
         h2#hint {
@@ -109,7 +106,6 @@
     <button class="custom-btn" onclick="redirectToPage()">前往生日卡片</button>
     <h1>祝福經文</h1>
     <button class="custom-btn" onclick="randomCard()">抽取隨機經文</button>
-    <div class="container">
         <h4 id="hint">
             我查了所有4章8節的經文，
             <br>想跟妳分享其中的心得。
@@ -121,7 +117,6 @@
         </h4>
         <h4 id="randomTitle"></h4>
         <h5 id="randomText"></h5>
-    </div>
     <script>
         function redirectToPage() {
             window.location.href = "https://simple0223.github.io/IreneBirthday/";
