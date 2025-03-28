@@ -85,25 +85,6 @@
             text-transform: uppercase;
         }
 
-        .custom-btn:hover {
-            background-color: #2b7dff;
-            box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .custom-btn:active {
-            background-color: #72a6f9;
-            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .custom-btn:focus {
-            outline: none;
-            background-color: #72a6f9;
-        }
-
-        .custom-btn:active, .custom-btn:focus {
-            -webkit-tap-highlight-color: transparent;
-        }
-
         #randomExperience {
             white-space: pre-line;
         }
@@ -129,15 +110,13 @@
 
         const button = document.querySelector('.custom-btn');
 
-// 當觸摸開始時，改變按鈕顏色
-button.addEventListener('touchstart', function() {
-    button.style.backgroundColor = '#72a6f9'; // 顏色可以自訂
-});
+        button.addEventListener('touchstart', function() {
+            button.style.backgroundColor = '#2b7dff';
+        });
 
-// 當觸摸結束時，回復按鈕顏色
-button.addEventListener('touchend', function() {
-    button.style.backgroundColor = '#a0c4ff'; // 顏色可以自訂
-});
+        button.addEventListener('touchend', function() {
+            button.style.backgroundColor = '#a0c4ff';
+        });
 
         const titles = [
             "出埃及記4:8\n又說、倘或他們不聽你的話、\n也不信頭一個神蹟、他們必信第二個神蹟。",
