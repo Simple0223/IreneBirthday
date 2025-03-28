@@ -127,6 +127,18 @@
             window.location.href = "https://simple0223.github.io/IreneBirthday/";
         }
 
+        const button = document.querySelector('.custom-btn');
+
+// 當觸摸開始時，改變按鈕顏色
+button.addEventListener('touchstart', function() {
+    button.style.backgroundColor = '#72a6f9'; // 顏色可以自訂
+});
+
+// 當觸摸結束時，回復按鈕顏色
+button.addEventListener('touchend', function() {
+    button.style.backgroundColor = '#a0c4ff'; // 顏色可以自訂
+});
+
         const titles = [
             "出埃及記4:8\n又說、倘或他們不聽你的話、\n也不信頭一個神蹟、他們必信第二個神蹟。",
             "士師記4:8\n巴拉說、你若同我去、我就去，\n你若不同我去、我就不去。",
