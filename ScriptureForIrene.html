@@ -15,7 +15,15 @@
             height: 100vh;
             overflow-x: hidden;
         }
+
         
+        .container {
+            max-width: 800px;
+            width: 90%;
+            margin: 0 auto;
+            text-align: left;
+        }
+
         .bg-fixed {
             position: fixed;
             top: 0;
@@ -104,18 +112,19 @@
     <button class="custom-btn" onclick="redirectToPage()">前往生日卡片</button>
     <h1>祝福經文</h1>
     <button class="custom-btn" onclick="randomCard()">抽取隨機經文</button>
+    <div class="container">
     <h4 id="hint">
-        我查了所有4章8節的經文，
-        <br>想跟妳分享其中的心得。
-        <br>太暴力或是描述尺寸的內容
-        <br>就沒有包含在裡面了。
-        <br>
-        <br>經文的出現沒有順序，
-        <br>免得妳太快看完哈哈XD
-    </h4>
-    <h4 id="randomTitle"></h4>
-    <h5 id="randomText"></h5>
-
+            我查了所有4章8節的經文，
+            <br>想跟妳分享其中的心得。
+            <br>太暴力或是描述尺寸的內容
+            <br>就沒有包含在裡面了。
+            <br>
+            <br>經文的出現沒有順序，
+            <br>免得妳太快看完哈哈XD
+        </h4>
+        <h4 id="randomTitle"></h4>
+        <h5 id="randomText"></h5>
+    </div>
     <script>
         function redirectToPage() {
             window.location.href = "https://simple0223.github.io/IreneBirthday/";
