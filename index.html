@@ -106,7 +106,7 @@
     <div class="bg-fixed"></div>
     <div class="overlay"></div>
     <button class="custom-btn" onclick="toBible()">抽取經文</button>
-    <button class="custom-btn" onclick="toPicture()">生日照片</button>
+    <button id="hintButton" style="display: none;" class="custom-btn" onclick="toPicture()">生日照片</button>
     <h1>生日卡片</h1>
     <h2 id="hint">要等2025年4月8號才會顯示</h2>
     <h5 id="birthdayCard" style="display: none;">
@@ -224,12 +224,13 @@
             button.style.backgroundColor = '#a0c4ff';
         });
 
-        const showDate = new Date("2025-03-08T00:00:00");
+        const showDate = new Date("2025-04-08T00:00:00");
 
         const now = new Date();
 
         if (now >= showDate) {
             document.getElementById("hint").style.display = "none";
+            document.getElementById("hintButton").style.display = "block";
             document.getElementById("birthdayCard").style.display = "block";
         }
     </script>
