@@ -22,7 +22,7 @@
         /* 圖片網格 */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 15px;
             padding: 20px;
             max-width: 1000px;
@@ -34,7 +34,6 @@
             overflow: hidden;
             border-radius: 10px;
             cursor: pointer;
-            transition: transform 0.3s ease-in-out;
         }
 
         .photo img {
@@ -45,21 +44,19 @@
             border-radius: 10px;
         }
 
-        /* 桌機 Hover 放大 2 倍 */
+        /* 桌機 Hover 效果 */
         @media (hover: hover) {
             .photo:hover img {
-                transform: scale(2);
+                transform: scale(1.1);
             }
             .photo:hover .caption {
                 opacity: 1;
             }
         }
 
-        /* 點擊時放大 2 倍（適用於手機 & 桌機） */
+        /* 點擊時放大（手機 & 桌機都適用） */
         .photo.active img {
-            transform: scale(2);
-            position: relative;
-            z-index: 10;
+            transform: scale(1.3);
         }
 
         /* 圖片標題 */
@@ -111,24 +108,9 @@
 
     <script>
         function toggleZoom(element) {
-            // 檢查是否已經有放大圖片
-            let activePhoto = document.querySelector(".photo.active");
-            if (activePhoto && activePhoto !== element) {
-                activePhoto.classList.remove("active");
-            }
-            // 切換當前圖片的放大效果
+            // 切換 class，讓圖片放大或恢復
             element.classList.toggle("active");
         }
-
-        // 點擊畫面其他地方時取消放大
-        document.addEventListener("click", function(event) {
-            let photos = document.querySelectorAll(".photo");
-            let clickedInsidePhoto = event.target.closest(".photo");
-
-            if (!clickedInsidePhoto) {
-                photos.forEach(photo => photo.classList.remove("active"));
-            }
-        });
     </script>
 
 </body>
