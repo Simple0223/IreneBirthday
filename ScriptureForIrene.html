@@ -28,12 +28,6 @@
             z-index: -2;
         }
 
-        @media (max-width: 768px) {
-            .bg-fixed {
-                background-image: url('https://github.com/Simple0223/IreneBirthday/blob/main/background1.jpg?raw=true');
-            }
-        }
-        
         .overlay {
             position: fixed;
             top: 0;
@@ -93,6 +87,22 @@
 
         #randomExperience {
             white-space: pre-line;
+        }
+        
+        @media (max-width: 768px) {
+            .bg-fixed {
+                background-image: url('https://github.com/Simple0223/IreneBirthday/blob/main/background1.jpg?raw=true');
+            }
+
+            .custom-btn:hover {
+                background-color: #2b7dff;
+                box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            .custom-btn:active {
+                background-color: #72a6f9;
+                box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+            }
         }
     </style>
 </head>
