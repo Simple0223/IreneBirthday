@@ -120,7 +120,8 @@
 <body>
     <div class="bg-fixed"></div>
     <div class="overlay"></div>
-    <button class="custom-btn" onclick="redirectToPage()">生日卡片</button>
+    <button class="custom-btn" onclick="toCard()">生日卡片</button>
+    <button class="custom-btn" onclick="toPicture()">生日照片</button>
     <h1>祝福經文</h1>
     <button class="custom-btn" onclick="randomCard()">抽取經文</button><br>
     <h4 id="hint">
@@ -131,8 +132,12 @@
     <h4 id="randomTitle"></h4>
     <h5 id="randomText"></h5>
     <script>
-        function redirectToPage() {
+        function toCard() {
             window.location.href = "https://simple0223.github.io/IreneBirthday/";
+        }
+        
+        function toPicture() {
+            window.location.href = "https://simple0223.github.io/IreneBirthday/BirthdayPicture";
         }
 
         const button = document.querySelector('.custom-btn');
