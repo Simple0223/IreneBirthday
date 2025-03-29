@@ -81,12 +81,39 @@
             }
         }
 
+        .custom-btn {
+            background-color: #a0c4ff;
+            border: none;
+            color: #FFF;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+
+        @media (min-width: 769px) {
+            .custom-btn:hover {
+                background-color: #2b7dff;
+                box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            .custom-btn:active {
+                background-color: #72a6f9;
+                box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+            }
+        }
     </style>
 </head>
 <body>
 
     <h1>🎉 芝琳的慶生照片 🎂</h1>
-
+    <button class="custom-btn" onclick="toCard()">生日卡片</button>
+    <button class="custom-btn" onclick="toBible()">抽取經文</button>
     <div class="gallery">
         <div class="photo" onclick="toggleZoom(this)">
             <img src="https://github.com/Simple0223/orangeBirthdayCard/blob/main/%E5%90%B1%E5%90%B1%E5%8D%A1%E7%89%87_%E8%97%8D.jpg?raw=true" alt="照片 1">
@@ -110,6 +137,24 @@
         function toggleZoom(element) {
             // 切換 class，讓圖片放大或恢復
             element.classList.toggle("active");
+        }
+
+        const button = document.querySelector('.custom-btn');
+
+        button.addEventListener('touchstart', function() {
+            button.style.backgroundColor = '#2b7dff';
+        });
+
+        button.addEventListener('touchend', function() {
+            button.style.backgroundColor = '#a0c4ff';
+        });
+
+        function toCard() {
+            window.location.href = "https://simple0223.github.io/IreneBirthday/";
+        }
+
+        function toBible() {
+            window.location.href = "https://simple0223.github.io/IreneBirthday/ScriptureForIrene";
         }
     </script>
 
